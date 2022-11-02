@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+
+[packages]
+requests = "==2.23.0"
+Flask = "==2.1.0"
+flask-cors = "*"
+jinja2 = "*"
+psycopg2-binary = "*"
+
+[requires]
+python_version = "3.7"

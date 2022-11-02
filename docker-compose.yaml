@@ -1,0 +1,88 @@
+version: '3'
+services:
+    cl_postgresql:
+        image: postgres:15.0-alpine
+        container_name: postgres_15.0-alpine
+        ports: 
+            - 127.0.0.1:65432:5432
+        volumes:
+            - ./cl_postgres/init:/docker-entrypoint-initdb.d
+            - ./database:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+            POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+            POSTGRES_HOST_AUTH_METHOD: password
+        hostname: cl_postgresql
+        restart: always
+        user: root
+
+    chainlink:
+        image: smartcontract/chainlink:1.3.0
+        #container_name: chainlink
+        tty: true
+        ports:
+            - 127.0.0.1:6688:6688
+        env_file:
+            - ./chainlink/.env
+        volumes:
+            - ./chainlink/data:/chainlink
+        depends_on:
+            - cl_postgresql
+        entrypoint: "/bin/bash -c 'chainlink local n -p /chainlink/.password -a /chainlink/.api'"
+        restart: on-failure
+
+    db:
+        build: ./psql/
+        volumes:
+            - ./psql/initdb.d:/docker-entrypoint-initdb.d
+        environment:
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: admin
+            POSTGRES_DB: compost
+        networks: 
+            - default
+        expose:
+            - 5432
+
+    app:
+        hostname: compost-api
+        build: ./backend/
+        volumes:
+            - ./backend:/home
+        environment:
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: admin
+            POSTGRES_DB: compost
+        ports:
+            - 127.0.0.1:5000:5000
+        command: flask run --host 0.0.0.0 #--port 5000
+        links:
+            - db
+        networks: 
+            - default
+        expose:
+            - 5000
+        depends_on:
+            db:
+                condition: service_healthy
+
+    adapter:
+        container_name: external-adapter
+        ports:
+            - "8080:8080"
+        build:
+            context: ./external-adapter
+        image: external-adapter
+        #        restart: on-failure
+        depends_on:
+            - app
+        links:
+            - app
+        networks: 
+            - default
+
+
+networks:
+    app:
+        #adapter:

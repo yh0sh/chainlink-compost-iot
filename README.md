@@ -1,6 +1,10 @@
 # Tokyo Web3 Hack-a-thon DAO部門 「Compost Project in India」
 
-## infos
+このレポジトリーでは、compostに設置しているIoTデータを取得するためのAPI、APIを使用するためのchainlinkのexternal adapter、およびchainlinkのnodeをそれぞれ作成する
+
+3つのプロダクトはdockerコンテナによって作成される
+
+## Infomations
 
 - 使用したtech stacks
 
@@ -31,13 +35,17 @@ http://localhost:6688/
 下記setupを参照
 
 
-# setup
+# Setup
 
 ## dockerのビルドとコンテナ起動
 
-> docker-compose build --no-cache
+```bash
+docker-compose build --no-cache
+```
 
-> docker compose up -d
+```bash
+docker compose up -d
+```
 
 ## infuraの設定
 
@@ -73,10 +81,13 @@ chainlink/data/.passwordを作成し、chainlinkアカウントに作成され�
 
 下記コマンドを打つとexternal adaptor(API)が呼び出される
 
-> curl 0.0.0.0:8080 -X POST -H "content-type:application/json" -d '{"id": 2, "data": {"key": ""}}' 
+```bash
+curl 0.0.0.0:8080 -X POST -H "content-type:application/json" -d '{"id": 2, "data": {"key": ""}}' 
+```
 
 # 参考サイト
 
+- https://github.com/thodges-gh/CL-EA-Python-Template
 - https://qiita.com/biga816/items/ff5b9ac8c7233acc4deb
 - https://zenn.dev/allegorywrite/articles/a8be18daa57980
 - https://yuyasugano.medium.com/chainlink%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B%E3%81%BE%E3%81%A7%E3%81%AE%E9%81%93%E3%81%AE%E3%82%8A-part2-external-adapters%E7%B7%A8-633d7c0ef5c5

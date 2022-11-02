@@ -37,14 +37,13 @@ http://localhost:6688/
 
 # Setup
 
-## dockerのビルドとコンテナ起動
+## envファイルの作成
 
-```bash
-docker-compose build --no-cache
+chainlinkディレクトリにある.env.sampleのファイル名を.envに変更する
+
 ```
-
-```bash
-docker compose up -d
+cd chainlink
+mv .env.sample .env
 ```
 
 ## infuraの設定
@@ -59,23 +58,34 @@ https://zenn.dev/allegorywrite/articles/a8be18daa57980#4.-chainlinknode%E3%82%92
 ETH_URL=wss://goerli.infura.io/ws/v3/<YOUR INFURA ID>
 ```
 
-
 ## chainlinkの設定
 
-chainlink/data/.apiを作成し、chainlinkアカウントのログインメールアドレスとパスワードを記入する
+chainlink/data/.apiを作成し、chainlinkアカウントのログインメールアドレスとパスワードを任意の値に変更する
 
 ```
 <YOUR LOGIN EMAIL>
 <YOUR LOGIN PASSWORD>
 ```
 
-chainlink/data/.passwordを作成し、chainlinkアカウントに作成されるwalletのパスワードを記入する
+chainlink/data/.passwordを作成し、chainlinkアカウントに作成されるwalletのパスワードを任意の値に変更する
 
 ```
 <YOUR WALLET PASSWORD>
 ```
 
 ※どちらもroot所有にする必要があるかもしれない
+
+## dockerのビルドとコンテナ起動
+
+dockerのビルドとコンテナ起動を実行する
+
+```bash
+docker-compose build --no-cache
+```
+
+```bash
+docker compose up -d
+```
 
 # 使用方法
 

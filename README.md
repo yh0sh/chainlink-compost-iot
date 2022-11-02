@@ -52,7 +52,7 @@ mv .env.sample .env
 
 https://zenn.dev/allegorywrite/articles/a8be18daa57980#4.-chainlinknode%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B-~node(job)%E7%B7%A8~
 
-取得したAPI keyをpostgres/chainlink/.envに書き足す
+取得したAPI keyをchainlink/.envに書き足す
 
 ```
 ETH_URL=wss://goerli.infura.io/ws/v3/<YOUR INFURA ID>

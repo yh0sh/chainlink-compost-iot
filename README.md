@@ -10,21 +10,21 @@
 
 ## Infomations
 
-- 使用したtech stacks
+### 使用したtech stacks
 
  python, docker, postgres, chainlink, infura
 
-- 使用したblockchain
+### 使用したblockchain
 
 goerli
 
-- deployしたcontract
+### deployしたcontract
 
 chainlink node (localで建てたもの)
 
 0x326C977E6efc84E512bB9C30f76E30c160eD06FB
 
-- テスト手順を含むリポジトリへのリンク
+### テスト手順を含むリポジトリへのリンク
 
 infura (setupにてnode構築後)
 
@@ -34,7 +34,7 @@ chainlink (setupにてnode構築後)
 
 http://localhost:6688/
 
-- 審査やテストのためにプロジェクトにアクセスする方法など
+### 審査やテストのためにプロジェクトにアクセスする方法など
 
 下記setupを参照
 

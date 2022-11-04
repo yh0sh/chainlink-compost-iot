@@ -8,6 +8,10 @@
 
 ![architecture](https://user-images.githubusercontent.com/10832598/200011816-56f568aa-5de7-407d-af64-1f7cfe084e6d.png)
 
+※Frontendは、下記レポジトリにて開発
+
+https://github.com/makishy/nftcompost
+
 ## Infomations
 
 ### 使用したtech stacks

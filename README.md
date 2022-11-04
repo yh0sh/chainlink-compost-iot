@@ -1,4 +1,4 @@
-# Tokyo Web3 Hack-a-thon DAO部門 「Compost Project in India」
+# Tokyo Web3 Hack-a-thon NFT部門 「Waste India」
 
 このレポジトリーでは、compostに設置しているIoTデータを取得するためのAPI、APIを使用するためのchainlinkのexternal adapter、およびchainlinkのnodeをそれぞれ作成する
 
